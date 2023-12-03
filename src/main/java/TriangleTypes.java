@@ -1,13 +1,16 @@
+import java.time.temporal.ValueRange;
+
 public class TriangleTypes {
 
-    private int side1, side2, side3;
+        private int side1;
+        private int side2;
+        private int side3;
 
-    public TriangleTypes setSides(int side1, int side2, int side3) {
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side3 = side3;
-        return this;
-    }
+        public TriangleTypes(int side1, int side2, int side3) {
+            this.side1 = side1;
+            this.side2 = side2;
+            this.side3 = side3;
+        }
 
     public static String triangleType(int side1, int side2, int side3) {//function to find type of triangle
         String type;
@@ -24,6 +27,9 @@ public class TriangleTypes {
             return type = "a Scalene";
         }
     }
+
+
+
 }
 
 
