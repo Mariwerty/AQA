@@ -1,4 +1,3 @@
-import com.google.common.collect.Range;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -42,7 +41,7 @@ public class TriangleTest {
     }
 
     @DataProvider()
-    public Object[][] notTriangle() {
+    public Object[][] isTriangle() {
         return new Object[][]{
                 {58, 66, 22},
                 {4, 41, 42},
@@ -71,13 +70,13 @@ public class TriangleTest {
 
     @Test(dataProvider = "isScalene")
     public void checkIsScalene(int side1, int side2, int side3) {
-        boolean twoEqualSides = (side1 != side2 && side2 != side3 && side3 != side1);
-        Assert.assertTrue(twoEqualSides, "Two sides of the triangle are not equal");
+        boolean allDifferentSides = (side1 != side2 && side2 != side3 && side3 != side1);
+        Assert.assertTrue(allDifferentSides, "This is not a scalene triangle");
     }
 
-    @Test(dataProvider = "notTriangle")
+    @Test(dataProvider = "isTriangle")
     public void validateTriangle (int side1, int side2, int side3) {
-        boolean notTriangleSides = ((side1 + side2) < side3 || (side2 + side3) < side1 || (side1 + side3) > side2);
-        Assert.assertTrue(notTriangleSides, "The proposed sides doesn't form a triangle");
+        boolean notTriangleSides = ((side1 + side2) < side3 || (side2 + side3) < side1 || (side1 + side3) < side2);
+        Assert.assertFalse(notTriangleSides, "The proposed sides doesn't form a triangle");
     }
 }
